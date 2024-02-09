@@ -1,5 +1,10 @@
 #le2_data_manipulation  
 
+
+#I used this ti run assignment 2 
+
+
+
 #load important packages##
 library(tidyverse)
 library(tidyr)
