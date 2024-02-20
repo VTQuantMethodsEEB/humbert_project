@@ -1,3 +1,8 @@
+
+###I fixed it!
+
+
+
 rm(list=ls()) # clears workspace
 
 #play data
@@ -5,7 +10,7 @@ rm(list=ls()) # clears workspace
 
 #example of read.csv with directory
 #dm=read.csv("/Users/klangwig/Desktop/VT/teaching/quant grad course/github/klangwig/bat_data.csv")
-fs=read.csv("C:/Users/tanne/Downloads/quan methods/Real Data/FlyingSquirrel.csv")
+fs=read.csv("vnfs_treemap.csv")
 #this file is in my project folder so I can read it in without calling the directory
 #dm=read.csv("bat_data.csv")
 #you will need to change this to match your director

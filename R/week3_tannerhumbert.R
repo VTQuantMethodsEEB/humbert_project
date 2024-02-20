@@ -10,7 +10,7 @@ fs=read.csv("vnfs_treemap.csv")
 
 
 head(fs)
-fs$ASPECT=log10(fs$LFI)
+
 
 
 ggplot(data=fs,aes(x=KIND,y=ELEV, color=KIND))+geom_point(size=2)

@@ -1,4 +1,14 @@
+#### I FIXED IT! Sorry about the data thing!
+
+
+
+
+
+
 #le2_data_manipulation  
+
+
+
 
 
 #I used this ti run assignment 2 
@@ -12,10 +22,10 @@ library(dplyr)
 
 #### Read in your data
 
-fs=read.csv("C:/Users/tanne/Downloads/quan methods/humbert_project/FlyingSquirrel.csv")
+
 
 #KL - please use relative pathogs to load in data - I don't have a file in your folder called FlyingSquirrel
-fs=read.csv("FlyingSquirrel.csv")
+fs=read.csv("vnfs_treemap.csv")
 
 
 # The function read.csv() reads in your .csv file containing all your data
