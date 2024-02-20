@@ -14,6 +14,10 @@ library(dplyr)
 
 fs=read.csv("C:/Users/tanne/Downloads/quan methods/humbert_project/FlyingSquirrel.csv")
 
+#KL - please use relative pathogs to load in data - I don't have a file in your folder called FlyingSquirrel
+fs=read.csv("FlyingSquirrel.csv")
+
+
 # The function read.csv() reads in your .csv file containing all your data
 # The green text within the " " marks indicates where your file is (its directory),
 # which you will need to specify. 
