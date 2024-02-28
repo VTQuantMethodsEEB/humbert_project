@@ -13,6 +13,13 @@ head(fs)
 
 
 
+df=fs %>% 
+  mutate(group=case_when(
+    TYPE%in% c("TELEM","BOX","DEN")~ as.factor(1) ,
+    TYPE=="RANDOM"~ as.factor(2))) %>%
+  select(c("group", "TPA_DEAD"))
+
+
 ggplot(data=fs,aes(x=KIND,y=ELEV, color=KIND))+geom_point(size=2)
 
 g2=ggplot(data=fs,aes(x=KIND,y=ELEV, color=KIND))+geom_point(size=2)
@@ -47,6 +54,11 @@ g6
 
 g7=ggplot(data=fs,aes(x=TYPE,y=TPA_DEAD,color=TYPE)) + geom_boxplot()+geom_point(aes(color=TYPE)) 
 g7  
+
+gA=ggplot(data=df,aes(x=group,y=TPA_DEAD,color=group)) + geom_boxplot()+geom_point(aes(color=group)) 
+gA  
+
+
 
 
 g8=ggplot(data=fs,aes(x=TYPE,y=TPA_LIVE,color=TYPE)) + geom_boxplot()+geom_point(aes(color=TYPE)) 

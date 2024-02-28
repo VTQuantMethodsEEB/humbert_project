@@ -24,7 +24,7 @@ library(dplyr)
 
 
 
-#KL - please use relative pathogs to load in data - I don't have a file in your folder called FlyingSquirrel
+#KL - please use relative pathogs to load in data - I don't have a file in your folder called FlyingSquirrel {I had updated my data file! It is fixed now.}
 fs=read.csv("vnfs_treemap.csv")
 
 
