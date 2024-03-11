@@ -61,15 +61,23 @@ mean(res>=obs)
 #Hypothesis: squirrels are selecting sites with high density of snags
 sq_test=t.test(sqboot)
 sq_test
+#this says: My bootstrapped resampled squirrel values are significantly different from 0
+#so the test does not match the hypothesis
 
 rn_test=t.test(rnboot)
 rn_test
 #snags are correlated to squirrel presence 
+#this says: My bootstrapped resampled rn values are significantly different from 0
+#so the test does not match the hypothesis
 
 
 #hypothesis: 
 
+#KL these are not tests and so the assignment was to use one of the tests we discussed
+
 #dead trees per acre by squirrel presence.
+#KL - this isn;t written as a hypothesis 
+#this says : the presence/absence of squirrels is predicted by dead trees per acre
 lme1.1 <- glm(SQUR~TPA_DEAD, family=binomial(link="logit"), fs)
 summary(lme1.1)
 
