@@ -34,12 +34,22 @@ This week I played with ggplot2 and set box plots up to look at some relationshi
 No homework this week we spent time learning sataistical philosophy and working on our graphs
 
 ##WEEK 5##
-CODE: loop.R
+CODE: loop_week6.R
 DATA: vnfs_treemap.csv
 
 This week and into week 6 we working on testing our hypothosises by making a for loop and doing t-test.
 
 ##WEEK 6##
+CODE: loop_week6.R
+DATA: vnfs_treemap.csv
+
+This week i finished making my for loop test and ran many logistic regressions.
+
+##WEEK 7##
+CODE: week_7_hw.R
+DATA: vnfs_treemap.csv
+
+This week I ran a linear model of the comparison between Basal area and elevation. We found that there is a positive linear correlation between basal area and elevation and this test fit all the assumptions. 
 
 
 
