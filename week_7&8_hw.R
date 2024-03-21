@@ -23,7 +23,7 @@ library(performance)
 l1 <- lm(ELEV~BALIVE, data = fs)
 
 check_model(l1)
-
+#All assumptions seem to be met.
 resid(l1)
 hist(resid(l1))
 #residuals are normally distributed!!!!!
@@ -31,6 +31,12 @@ hist(resid(l1))
 shapiro.test((resid(l1)))
 #it is significant (does it matter? I am still confused)
 
+
+###week 8 playing 
+library(effects)
+library(emmeans)
+library(multcompView)
+library(multcomp)
 
 
 
