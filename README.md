@@ -46,11 +46,12 @@ DATA: vnfs_treemap.csv
 This week i finished making my for loop test and ran many logistic regressions.
 
 ##WEEK 7##
-CODE: week_7_hw.R
+CODE: week_7&8_hw.R
 DATA: vnfs_treemap.csv
 
 This week I ran a linear model of the comparison between Basal area and elevation. We found that there is a positive linear correlation between basal area and elevation and this test fit all the assumptions. 
 
+##WEEK 8##
 
 
 

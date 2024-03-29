@@ -5,7 +5,7 @@ fs=read.csv("vnfs_treemap.csv")
 Mod1= lm(ELEV ~ BALIVE, data=fs)
 summary(Mod1)
 plot(Mod1)
-#
+#see check model
 mod2 <- lm(SQUR ~ ., data=fs)
 summary(mod2)
 
@@ -17,7 +17,7 @@ r=ggplot(data=fs, aes(x=BALIVE, y=ELEV))+
   theme_bw() + 
   theme(axis.title=element_text(size=20),axis.text=element_text(size=10),panel.grid = element_blank(), axis.line=element_line(),legend.position="top",legend.title=element_blank())
 print(r)
-
+#data is tall but fairly distributed 
 library(performance)
 
 l1 <- lm(ELEV~BALIVE, data = fs)
@@ -32,11 +32,111 @@ shapiro.test((resid(l1)))
 #it is significant (does it matter? I am still confused)
 
 
-###week 8 playing 
+###week 8 
 library(effects)
 library(emmeans)
 library(multcompView)
 library(multcomp)
 
+pr <- function(m) printCoefmat(coef(summary(m)),
+                               digits=3,signif.stars=FALSE)
+
+
+
+
+#Squirrel presence will increase with the with interaction of forest type(spruce) and canopy height.
+lmLC <- lm(SQUR~KIND*STANDHT, data=fs)
+summary(lmLC)####
+
+#Making the new data frame!
+new.dat.combos = with(fs, 
+                       expand.grid(KIND=unique(KIND), 
+                                   STANDHT=seq(min(STANDHT),max(STANDHT), by=1)))
+#Prediction of stand heights based on the interaction between squirrels and spruce stand type. 
+new.dat.combos$SQUR = predict(lmLC,newdata=new.dat.combos)
+
+#Plotting flat predictions
+ggplot(new.dat.combos,aes(x=STANDHT,y=SQUR,colour=KIND))+ 
+  geom_line(aes(group=KIND))+ 
+  geom_point(data=fs, aes(x=STANDHT,y=SQUR,colour = KIND)) 
+
+
+#There are more squirrels in spruce or conifer systems at 37 ft than in any other system at any other height. 
+
+#Plotting predictions with smooth lines 
+s=ggplot(fs,aes(x=STANDHT,y= SQUR,colour=KIND))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
+
+s
+###EXPLINATION: The correlation with a spruce component stand height, predicts squirrel presence in stands containing conifers at 25-50 ft and decreasing there after.
+
+##ADDITIVE
+#
+
+pr(lmTL1 <- lm(SQUR~KIND+STANDHT,data=fs))
+#
+
+#plot it
+
+pp <- with(fs,expand.grid(KIND=unique(KIND),STANDHT=unique(STANDHT)))
+pp$SQUR <- predict(lmTL1,newdata=pp)
+
+ggplot(fs,aes(x=STANDHT,y=SQUR,colour=KIND))+
+  geom_point()+
+  geom_line(data=pp,aes(group=KIND))
+### my additive model shows supports my hypothesis in that squirrels will be more present in spruce conditions, but does not support my claim that presence will increase with height.  
+
+
+
+
+###### PLAYING #######
+###class
+lmLS <- lm(SQUR~CLASS*STANDHT, data=fs)
+summary(lmLS)####
+
+#Making the new data frame!
+new.dat.combos2 = with(fs, 
+                      expand.grid(CLASS=unique(CLASS), 
+                                  STANDHT=seq(min(STANDHT),max(STANDHT), by=1)))
+#Prediction of stand heights based on the interaction between squirrels and spruce abundance. 
+new.dat.combos2$SQUR = predict(lmLS,newdata=new.dat.combos)
+
+
+sq=ggplot(fs,aes(x=STANDHT,y= SQUR,colour=CLASS))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
+
+sq
+
+####class by basal area
+
+lmLS1 <- lm(SQUR~CLASS*BALIVE, data=fs)
+summary(lmLS)####
+
+#Making the new data frame!
+new.dat.combos3 = with(fs, 
+                       expand.grid(CLASS=unique(CLASS), 
+                                   BALIVE=seq(min(BALIVE),max(BALIVE), by=1)))
+#Prediction of stand heights based on the interaction between squirrels and spruce abundance. 
+new.dat.combos3$SQUR = predict(lmLS1,newdata=new.dat.combos)
+
+
+sq1=ggplot(fs,aes(x=BALIVE,y= SQUR,colour=CLASS))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
+
+sq1
+
+#class by dry bio D
+
+lmLS3 <- lm(SQUR~CLASS*DRYBIO_D, data=fs)
+summary(lmLS)####
+
+#Making the new data frame!
+new.dat.combos3 = with(fs, 
+                       expand.grid(CLASS=unique(CLASS), 
+                                   DRYBIO_D=seq(min(DRYBIO_D),max(DRYBIO_D), by=1)))
+#Prediction of stand heights based on the interaction between squirrels and spruce abundance. 
+new.dat.combos3$SQUR = predict(lmLS3,newdata=new.dat.combos)
+
+
+sq3=ggplot(fs,aes(x=DRYBIO_D,y= SQUR,colour=CLASS))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
+
+sq3
 
 
