@@ -1,3 +1,4 @@
+####HW####
 rm(list=ls())
 fs=read.csv("vnfs_treemap.csv")
 #lets see if I got this whole hypothesis thing down.
@@ -108,7 +109,7 @@ sq
 ####class by basal area
 
 lmLS1 <- lm(SQUR~CLASS*BALIVE, data=fs)
-summary(lmLS)####
+summary(lmLS1)####
 
 #Making the new data frame!
 new.dat.combos3 = with(fs, 
@@ -125,7 +126,7 @@ sq1
 #class by dry bio D
 
 lmLS3 <- lm(SQUR~CLASS*DRYBIO_D, data=fs)
-summary(lmLS)####
+summary(lmLS3)####
 
 #Making the new data frame!
 new.dat.combos3 = with(fs, 
@@ -138,5 +139,39 @@ new.dat.combos3$SQUR = predict(lmLS3,newdata=new.dat.combos)
 sq3=ggplot(fs,aes(x=DRYBIO_D,y= SQUR,colour=CLASS))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
 
 sq3
+
+#tpa by class
+
+lmLS4 <- lm(SQUR~CLASS*TPA_LIVE, data=fs)
+summary(lmLS4)####
+
+#Making the new data frame!
+new.dat.combos4 = with(fs, 
+                       expand.grid(CLASS=unique(CLASS), 
+                                   TPA_LIVE=seq(min(TPA_LIVE),max(TPA_LIVE), by=1)))
+#Prediction of stand heights based on the interaction between squirrels and spruce abundance. 
+new.dat.combos4$SQUR = predict(lmLS4,newdata=new.dat.combos)
+
+
+sq4=ggplot(fs,aes(x=TPA_LIVE,y= SQUR,colour=CLASS))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
+
+sq4
+
+#TPA DEAD by class
+
+lmLS5 <- lm(SQUR~CLASS*TPA_DEAD, data=fs)
+summary(lmLS5)####
+
+#Making the new data frame!
+new.dat.combos5 = with(fs, 
+                       expand.grid(CLASS=unique(CLASS), 
+                                   TPA_DEAD=seq(min(TPA_DEAD),max(TPA_DEAD), by=1)))
+#Prediction of stand heights based on the interaction between squirrels and spruce abundance. 
+new.dat.combos5$SQUR = predict(lmLS5,newdata=new.dat.combos)
+
+
+sq5=ggplot(fs,aes(x=TPA_DEAD,y= SQUR,colour=CLASS))+  geom_smooth(method = "glm", method.args = list(family = "binomial")) + geom_point(data=fs) 
+
+sq5
 
 
