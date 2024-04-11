@@ -38,7 +38,7 @@ summary(lme1.10)
 
 #inter
 lme1.11 = glm(SQUR~STANDHT* CLASS, family=binomial(link="logit"), fs)
-summary(lme1.10)
+summary(lme1.11)
 
 
 dat.new=expand.grid(STANDHT=seq(from = min(fs$STANDHT),
@@ -86,11 +86,12 @@ lrtest(l1,l2)
 lrtest(l1,l3)
 #looks like basal area is a significant addition to the model
 
-#testing the nested adding basal area to the nested model and testing it against the additon of stand height
+#testing the nested adding basal area to the nested model and testing it against the addition of stand height
 lrtest(l3,l4)
 #seems the the addition of stand height and basal area are most significant 
-#lets test the new modle agaisn the original nested model
+#lets test the new model against the original nested model
 lrtest(l1,l4)
+lrtest(l2,l4)
 #the new model seems to be most significant
 #Finally lets test for interaction
 l5 = glm(SQUR~STANDHT*BALIVE, family=binomial(link="logit"), fs)
