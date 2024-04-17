@@ -23,7 +23,13 @@ library(performance)
 
 l1 <- lm(ELEV~BALIVE, data = fs)
 
+par(mfrow=c(2,2)) 
+plot(l1)
+
 check_model(l1)
+### comment NAL: It looks like your scale-location plot is not horizontal, meaning your residuals are not equally spread along the range of predictors!
+# Also some deviation from the line in your Q-Q plot. 
+
 #All assumptions seem to be met.
 resid(l1)
 hist(resid(l1))
@@ -31,6 +37,8 @@ hist(resid(l1))
 
 shapiro.test((resid(l1)))
 #it is significant (does it matter? I am still confused)
+### comment NAL: If the Sig. value of the Shapiro-Wilk Test is greater than 0.05, the data is normal. 
+# If it is below 0.05, the data significantly deviate from a normal distribution.
 
 
 ###week 8 
@@ -47,7 +55,12 @@ pr <- function(m) printCoefmat(coef(summary(m)),
 
 #Squirrel presence will increase with the with interaction of forest type(spruce) and canopy height.
 lmLC <- lm(SQUR~KIND*STANDHT, data=fs)
-summary(lmLC)####
+summary(lmLC)
+
+#### Comment NAL: To check out the effects of other "Kind" you could do a relevel command or an effects plot
+library(effects)
+plot(allEffects(lmLC))
+
 
 #Making the new data frame!
 new.dat.combos = with(fs, 
