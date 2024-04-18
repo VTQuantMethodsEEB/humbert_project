@@ -78,17 +78,17 @@ rn_test
 #dead trees per acre by squirrel presence.
 #KL - this isn;t written as a hypothesis 
 #this says : the presence/absence of squirrels is predicted by dead trees per acre
-lme1.1 <- glm(SQUR~TPA_DEAD, family=binomial(link="logit"), fs)
+lme1.1 <- glm(SQUR~ BALIVE + CLASS, family=binomial(link="logit"), fs)
 summary(lme1.1)
 
 #presence of squirrel by canopy height
-lme1.2 <- glm(SQUR~STANDHT, family=binomial(link="logit"), fs)
+lme1.2 <- glm(SQUR~STANDHT+CLASS, family=binomial(link="logit"), fs)
 summary(lme1.2)
 
  spruce <- subset(fs,ForTypName=="Red spruce")
 
  
- lme1.3 <- glm(SQUR~STANDHT, family=binomial(link="logit"), spruce)
+ lme1.3 <- glm(SQUR~STANDHT, family=binomial(link="logit"), fs)
  summary(lme1.3)
  
  

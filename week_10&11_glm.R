@@ -20,11 +20,6 @@ library(pROC)
 
 
 ###### HW 10 ##########
-#variables I want to look at. 
-
-lme1.8 = glm(SQUR~STANDHT + BALIVE + ASPECT + ELEV + LFI + CLASS  + SLOPE + TPA_LIVE + TPA_DEAD, family=binomial(link="logit"), spruce2)
-summary(lme1.8)
-
 
 
 
@@ -142,7 +137,7 @@ lme1.9.6 = glm(SQUR~STANDHT + BALIVE +ELEV+LFI+ ELEV * LFI + CLASS  + TPA_LIVE, 
 summary(lme1.9.5)
 
 AIC(lme1.00, lme1.9, lme1.9.1, lme1.9.2, lme1.9.3, lme1.9.4, lme1.9.5,lme1.9.6 )
-auc(lme1.9.5)
+
 
 aictab(cand.set=list(lme1.00, lme1.9, lme1.9.1, lme1.9.2, lme1.9.3, lme1.9.4, lme1.9.5,lme1.9.6 ),modnames=c("lme1.00", "lme1.9", "lme1.9.1", "lme1.9.2", "lme1.9.3", "lme1.9.4", "lme1.9.5","lme1.9.6" ), second.ord = F)#AIC table
 

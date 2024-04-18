@@ -1,0 +1,23 @@
+rm(list=ls())
+fs=read.csv("vnfs_treemap.csv")
+library(effects)
+library(emmeans)
+library(ggplot2)
+library(epitools)
+library(MASS)
+library(DHARMa)
+library(AICcmodavg)
+library(reshape2)
+library(tidyverse)
+library(caret)
+library(leaps)
+library(pROC)
+library(lme4)
+library(Matrix)
+library(car)
+
+
+gm1 = glmer(SQUR~ELEV+LFI+ELEV *LFI + CLASS +STANDHT +BALIVE + (1|TYPE),data=fs, family = "binomial")
+summary(gm1)
+
+Anova(gm1, type=3)
