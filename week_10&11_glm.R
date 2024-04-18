@@ -26,8 +26,7 @@ lme1.8 = glm(SQUR~STANDHT + BALIVE + ASPECT + ELEV + LFI + CLASS  + SLOPE + TPA_
 summary(lme1.8)
 
 
-
-
+### comment NAL: don't forget to say what hypothesis you're testing in your code (:
 
 ####maybe that was too much for this assignment####
 ####real homework 10&11####
