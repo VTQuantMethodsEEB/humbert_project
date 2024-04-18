@@ -27,6 +27,7 @@ summary(lme1.8)
 
 
 ### comment NAL: don't forget to say what hypothesis you're testing in your code (:
+    ## everything else is wonderful! excellent job Tanner
 
 ####maybe that was too much for this assignment####
 ####real homework 10&11####
