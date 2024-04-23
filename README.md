@@ -63,8 +63,11 @@ DATA: vnfs_treemap.csv
 
 This week I tested adding 2 forest structure variables to a land form habitat model of Northern flying squirrel habitat. To do this I made 4 GLMS including the accepted model, the same model with the addition of stand height, the same original model with the addition of basal area, and the original model with the inclusion of both variables. To test which was best fit I ran a likelihood ration test to find the model with best significance and I ran the AIC of all models to find the more predictive model with the most parsimony. The model that included all variables was the most significant and the most parsimonious. 
 
+##FINAL PRESENTATION##
+CODE: week_10&11_glm.R & week_7&8_hw.R
+DATA: vnfs_treemap.csv
 
-
+I made my presentation using both the codes listed above! 
 
 
 

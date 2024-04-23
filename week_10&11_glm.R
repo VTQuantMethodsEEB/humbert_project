@@ -72,7 +72,7 @@ l1 = glm(SQUR~ELEV+LFI+ELEV *LFI + CLASS, family=binomial(link="logit"), fs)
 l2 = glm(SQUR~ELEV+LFI+ELEV *LFI + CLASS + STANDHT, family=binomial(link="logit"), fs)
 l3 = glm(SQUR~ELEV+LFI+ELEV *LFI + CLASS + BALIVE , family=binomial(link="logit"), fs)
 l4 = glm(SQUR~ELEV+LFI+ELEV *LFI + CLASS +STANDHT +BALIVE, family=binomial(link="logit"), fs)
-
+summary(l4)
 #testing the nested model against the addition of STANDHT
 lrtest(l1,l2)
 #looks like stand height alone is not a significant addition 
